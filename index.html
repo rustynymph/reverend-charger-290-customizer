@@ -193,20 +193,19 @@
                 <label for="green2">Oceanside Green</label><br><br>
 
                 <label for="pickguard-color"><h2>Pickguard:</h2></label>
-                
-
+        
                 <input type="radio" id="customcolor" name="guardtexture" value="customcolor" onchange="switchToCustomColor()">
                 <!--<label for="customcolor">Custom color <input type="color" id="pickguard-color" name="pickguard-color" value="#FbbFFF" onchange="updatePickguardColor(this.value);"></label><br>-->
                 <label for="customcolor">Custom color <input type="color" id="pickguard-color" name="pickguard-color" value="#FbbFFF" onchange="updatePickguardColor(this.value);"></label><br>
 
-                <input type="radio" id="whitepearl" name="guardtexture" value="whitepearlimg" onchange="updatePickguardImg(this.value)">
-                <label for="whitepearl">White Pearl</label><br>
-
-                <input type="radio" id="blueglitter" name="guardtexture" value="blueglitterimg" onchange="updatePickguardImg(this.value)" checked=true>
-                <label for="blueglitter">Blue Glitter</label><br>
-
                 <input type="radio" id="customimage" name="guardtexture" value="customimage" onchange="switchToCustomImage()">
                 <label for="customimage">Custom image <input type="file" id="file_select"/></label><br>
+
+                <input type="radio" id="whitepearl" name="guardtexture" value="whitepearlimg" onchange="updatePickguardImg(this.value)">
+                <label for="whitepearl">White Pearl<br><img style="padding-left:20px" width=50 src="./whitepearl.jpg"></label><br>
+
+                <input type="radio" id="blueglitter" name="guardtexture" value="blueglitterimg" onchange="updatePickguardImg(this.value)" checked=true>
+                <label for="blueglitter">Blue Glitter<br><img style="padding-left:20px" width=50 src="./blueglitter.jpg"></label><br>
 
                 <script>
                 $("input:file").change(function () {

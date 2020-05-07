@@ -3,27 +3,44 @@
     <head>
         <title></title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Damion&display=swap" rel="stylesheet">
         <style>
 
+            .total-container {
+                height: auto;
+                width: 100%;
+                border: 0px solid blue;
+            }
+
             .container {
-                float:left;
+                position: relative;
+                text-align: center;
+                display: inline-block;
                 overflow: hidden;
                 width: 400px;
                 height: 600px;
+                border: 1px solid #acacac;
 
             }
 
-            .pickguard {
-                z-index: 999;
+            .settings-container {
                 position: absolute;
-                left: 63px;
-                top: 212px;
+                text-align: left;
+                display: inline-block;
+                padding: 10px;
+            }
+
+            .pickguard {
+                z-index: 2;
+                position: relative;
+                left: 15px;
+                top: -818px;
                 width: 220px;
             }
 
             .guitar {
-                position: absolute;
-                z-index: 0;
+                position: relative;
+                z-index: 1;
                 width: 300px;
                 top: -400px;
             }
@@ -32,13 +49,29 @@
                 font-family: Arial, Helvetica, sans-serif;
             }
 
+            h1 {
+                font-family: 'Damion', cursive;
+                font-size: 3rem;
+                padding: 0px;
+                margin: 0px;
+            }
+
+            h2 {
+                font-family: 'Damion', cursive;
+                padding: 0px;
+                margin: 0px;
+            }
+
         </style>
     </head>
 
     <body>
+        <h1>Reverend Charger 290</h1><br>
+
+        <div class="total-container">
+
         <div class="container">
-            <img id="main-guitar" class="guitar" src="./alpine.png">
-            <!--<img src="./pickguard.svg">-->
+            <img id="main-guitar" class="guitar" src="./mulberry.png">
 
             <svg class="pickguard" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                     viewBox="0 0 340.9 304.9" style="enable-background:new 0 0 340.9 304.9;" xml:space="preserve">
@@ -63,7 +96,7 @@
 
                 <style type="text/css">
                     .st0{fill:none;}
-                    .st1{fill:#FbbFFF;}
+                    .st1{fill:url(#blueglitterimg);}
                 </style>
                 <g id="ql6Ddl.tif">
                     <g>
@@ -133,75 +166,83 @@
                 </svg>
             </div>
 
-            <label for="pickguard-color">Select pickguard color or texture:</label><br>
-            Color <input type="color" id="pickguard-color" name="pickguard-color" value="#FbbFFF" onchange="updatePickguard(this.value);">
-            <br>
-            <input type="radio" id="whitepearl" name="guardtexture" value="whitepearlimg" onchange="updatePickguardImg(this.value)">
-            <label for="whitepearl">White Pearl</label><br>
+            <div class="settings-container">
+                <h2>Body:</h2>
+                <input type="radio" id="green" name="bodycolor" value="alpine.png" onchange="updateBody(this.value)">
+                <label for="green">Metallic Alpine</label><br>
 
-            <input type="radio" id="blueglitter" name="guardtexture" value="blueglitterimg" onchange="updatePickguardImg(this.value)">
-            <label for="blueglitter">Blue Glitter</label><br>
-            Upload custom image: <input type="file" id="file_select"/>
+                <input type="radio" id="pink" name="bodycolor" value="mulberry.png" onchange="updateBody(this.value)" checked=true>
+                <label for="pink">Mulberry Mist</label><br>
 
-            <script>
-            $("input:file").change(function () {
-                uncheckTextureButtons();
+                <input type="radio" id="black" name="bodycolor" value="black.png" onchange="updateBody(this.value)">
+                <label for="black">Midnight Black</label><br>
 
-                if ($(this).val() !== "") {
-                 var file = $('#file_select')[0].files[0];
-                 console.log(file.size);
-                 //console.log(file.width);
-                 var reader = new FileReader();
-                 var img = new Image();
-                 var _URL = window.URL || window.webkitURL;
-                 reader.readAsDataURL(file);
-                 reader.onload = function(_file) {
-                 
-                 $('#custompattern #customimg').attr('href',_file.target.result);
-                 //console.log(img.src);
-                 console.log(img.width);
-             } 
-                }
+                <input type="radio" id="red" name="bodycolor" value="red.png" onchange="updateBody(this.value)">
+                <label for="red">Burnt Brick</label><br>
 
-                updatePickguardImg("custompattern");
+                <input type="radio" id="blue" name="bodycolor" value="blue.png" onchange="updateBody(this.value)">
+                <label for="blue">Great Lakes Blue</label><br>
 
-            });
-            </script>
+                <input type="radio" id="burst" name="bodycolor" value="burst.png" onchange="updateBody(this.value)">
+                <label for="burst">3-Tone Burst</label><br>
 
-            <br><br>
-            Select body color:<br>
-            <input type="radio" id="green" name="bodycolor" value="alpine.png" onchange="updateBody(this.value)" checked=true>
-            <label for="green">Metallic Alpine</label><br>
+                <input type="radio" id="blue2" name="bodycolor" value="blue2.png" onchange="updateBody(this.value)">
+                <label for="blue2">Deep Sea Blue</label><br>
 
-            <input type="radio" id="pink" name="bodycolor" value="mulberry.png" onchange="updateBody(this.value)">
-            <label for="pink">Mulberry Mist</label><br>
+                <input type="radio" id="green2" name="bodycolor" value="green2.png" onchange="updateBody(this.value)">
+                <label for="green2">Oceanside Green</label><br><br>
 
-            <input type="radio" id="black" name="bodycolor" value="black.png" onchange="updateBody(this.value)">
-            <label for="black">Midnight Black</label><br>
+                <label for="pickguard-color"><h2>Pickguard:</h2></label>
+                
 
-            <input type="radio" id="red" name="bodycolor" value="red.png" onchange="updateBody(this.value)">
-            <label for="red">Burnt Brick</label><br>
+                <input type="radio" id="customcolor" name="guardtexture" value="customcolor" onchange="switchToCustomColor()">
+                <!--<label for="customcolor">Custom color <input type="color" id="pickguard-color" name="pickguard-color" value="#FbbFFF" onchange="updatePickguardColor(this.value);"></label><br>-->
+                <label for="customcolor">Custom color <input type="color" id="pickguard-color" name="pickguard-color" value="#FbbFFF" onchange="updatePickguardColor(this.value);"></label><br>
 
-            <input type="radio" id="blue" name="bodycolor" value="blue.png" onchange="updateBody(this.value)">
-            <label for="blue">Great Lakes Blue</label><br>
+                <input type="radio" id="whitepearl" name="guardtexture" value="whitepearlimg" onchange="updatePickguardImg(this.value)">
+                <label for="whitepearl">White Pearl</label><br>
 
-            <input type="radio" id="burst" name="bodycolor" value="burst.png" onchange="updateBody(this.value)">
-            <label for="burst">3-Tone Burst</label><br>
+                <input type="radio" id="blueglitter" name="guardtexture" value="blueglitterimg" onchange="updatePickguardImg(this.value)" checked=true>
+                <label for="blueglitter">Blue Glitter</label><br>
 
-            <input type="radio" id="blue2" name="bodycolor" value="blue2.png" onchange="updateBody(this.value)">
-            <label for="blue2">Deep Sea Blue</label><br>
+                <input type="radio" id="customimage" name="guardtexture" value="customimage" onchange="switchToCustomImage()">
+                <label for="customimage">Custom image <input type="file" id="file_select"/></label><br>
 
-            <input type="radio" id="green2" name="bodycolor" value="green2.png" onchange="updateBody(this.value)">
-            <label for="green2">Oceanside Green</label><br>
+                <script>
+                $("input:file").change(function () {
+                    uncheckTextureButtons();
 
+                    if ($(this).val() !== "") {
+                    var file = $('#file_select')[0].files[0];
+                    console.log(file.size);
+                    //console.log(file.width);
+                    var reader = new FileReader();
+                    var img = new Image();
+                    var _URL = window.URL || window.webkitURL;
+                    reader.readAsDataURL(file);
+                    reader.onload = function(_file) {
+                    
+                    $('#custompattern #customimg').attr('href',_file.target.result);
+                    //console.log(img.src);
+                    console.log(img.width);
+                } 
+                    }
+
+                    document.getElementById("customimage").checked = true;
+                    updatePickguardImg("custompattern");
+
+                });
+                </script>
+        </div>
+    </div>
 
 
 
         <script>
 
-            function updatePickguard(selectedColor) {
-                uncheckTextureButtons();
-
+            function updatePickguardColor(selectedColor) {
+                var colorButton = document.getElementById("customcolor");
+                colorButton.checked = true;
                 elements = document.getElementsByClassName("st1");
                 for (var i = 0; i < elements.length; i++) {
                     elements[i].style.fill = selectedColor;
@@ -225,6 +266,18 @@
                 for( i = 0; i < radios.length; i++ ) {
                     radios[i].checked = false;
                 }
+            }
+
+            function switchToCustomColor() {
+                var colorPickerValue = document.getElementById("pickguard-color").value;
+                elements = document.getElementsByClassName("st1");
+                for (var i = 0; i < elements.length; i++) {
+                    elements[i].style.fill = colorPickerValue;
+                }                
+            }
+
+            function switchToCustomImage() {
+                updatePickguardImg("custompattern");               
             }
 
         </script>

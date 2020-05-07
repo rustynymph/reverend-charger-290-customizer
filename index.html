@@ -12,7 +12,18 @@
                 border: 0px solid blue;
             }
 
-            .container {
+            .charger-container {
+                position: relative;
+                text-align: center;
+                display: inline-block;
+                overflow: hidden;
+                width: 400px;
+                height: 600px;
+                border: 1px solid #acacac;
+
+            }
+
+            .sg-container {
                 position: relative;
                 text-align: center;
                 display: inline-block;
@@ -40,11 +51,18 @@
                 width: 220px;
             }
 
-            .guitar {
+            .charger-guitar {
                 position: relative;
                 z-index: 1;
                 width: 300px;
                 top: -400px;
+            }
+
+            .sg-guitar {
+                position: relative;
+                z-index: 1;
+                width: 300px;
+                top: 0px;               
             }
 
             body {
@@ -52,6 +70,7 @@
             }
 
             h1 {
+                z-index: 3;
                 font-family: 'Damion', cursive;
                 font-size: 3rem;
                 padding: 0px;
@@ -75,17 +94,33 @@
                 box-shadow: 0 0 1px rgba(255, 255, 255, .5);
             }
 
+            #sg-svg {
+                z-index: 2;
+                position: absolute;
+                width: 90px;
+                left: 212px;
+                top: 124px;
+            }
+
         </style>
     </head>
 
     <body>
-        <h1>Reverend Charger 290</h1><br>
 
         <div class="total-container">
 
-        <div class="container">
-            <img id="main-guitar" class="guitar" src="./bodies/mulberry.png">
+        <h1 id="model-name" class="model-name">Reverend Charger 290</h1>
+        <label for="cars">Choose a model:</label>
 
+        <select id="guitars" onchange="updateModel(this.value);">
+        <option value="rc290">Reverend Charger 290</option>
+        <option value="sg">Gibson SG</option>
+        </select><br>
+
+        <div class="charger-container">
+
+            <img id="charger-guitar" class="charger-guitar" src="./bodies/mulberry.png">
+            
             <svg class="pickguard" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                     viewBox="0 0 340.9 304.9" style="enable-background:new 0 0 340.9 304.9;" xml:space="preserve">
 
@@ -146,8 +181,6 @@
                             <image id="customimg" class='custom' href="" x="0" y="0"
                                 width="350" height="350" />
                         </pattern>
-
-
                 
                     </defs>
 
@@ -221,105 +254,241 @@
                     </g>
                 </g>
                 </svg>
+
             </div>
 
-            <div class="settings-container">
+            <div class="sg-container">
+                <img id="sg-guitar" class="sg-guitar" src="./bodies/gibson/sg/red.jpg">
+
+                <svg version="1.1" id="sg-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                viewBox="0 0 113.6 191.2" style="enable-background:new 0 0 113.6 191.2;" xml:space="preserve">
+                <style type="text/css">
+                    .st2{fill:transparent;}
+                    .st3{fill:#AEA3FD;}
+                </style>
+
+                <defs>
+
+                    <pattern id="blueglitterimg" patternUnits="userSpaceOnUse" width="100%" height="100%">
+                        <image class='twombly' href="./pickguards/blueglitter.jpg" x="-100" y="-100"
+                            width="600" height="600" />
+                    </pattern>
+
+                    <pattern id="redglitterimg" patternUnits="userSpaceOnUse" width="100%" height="100%">
+                        <image class='twombly' href="./pickguards/redglitter.jpg" x="0" y="0"
+                            width="350" height="350" />
+                    </pattern>
+
+                    <pattern id="greenglitterimg" patternUnits="userSpaceOnUse" width="100%" height="100%">
+                        <image class='twombly' href="./pickguards/greenglitter.jpg" x="0" y="0"
+                            width="350" height="350" />
+                    </pattern>
+
+                    <pattern id="blackglitterimg" patternUnits="userSpaceOnUse" width="100%" height="100%">
+                        <image class='twombly' href="./pickguards/blacksilverglitter.jpg" x="0" y="0"
+                            width="350" height="350" />
+                    </pattern>
+
+                    <pattern id="blackgoldglitterimg" patternUnits="userSpaceOnUse" width="100%" height="100%">
+                        <image class='twombly' href="./pickguards/blackgoldglitter.jpg" x="0" y="0"
+                            width="350" height="350" />
+                    </pattern>
+
+                    <pattern id="silverglitterimg" patternUnits="userSpaceOnUse" width="100%" height="100%">
+                        <image class='twombly' href="./pickguards/silverglitter.jpg" x="0" y="0"
+                            width="350" height="350" />
+                    </pattern>
+
+                    <pattern id="copperglitterimg" patternUnits="userSpaceOnUse" width="100%" height="100%">
+                        <image class='twombly' href="./pickguards/copperglitter.jpg" x="0" y="0"
+                            width="350" height="350" />
+                    </pattern>
+
+                    <pattern id="goldglitterimg" patternUnits="userSpaceOnUse" width="100%" height="100%">
+                        <image class='twombly' href="./pickguards/goldglitter.jpg" x="0" y="0"
+                            width="350" height="350" />
+                    </pattern>
+
+                    <pattern id="whitepearlimg" patternUnits="userSpaceOnUse" width="100%" height="100%">
+                        <image class='twombly' href="./pickguards/whitepearl.jpg" x="0" y="0"
+                            width="350" height="350" />
+                    </pattern>
+
+                    <pattern id="goldglitterimg" patternUnits="userSpaceOnUse" width="100%" height="100%">
+                        <image class='twombly' href="./pickguards/goldglitter.jpg" x="0" y="0"
+                            width="350" height="350" />
+                    </pattern>
+
+
+                    <pattern id="custompattern" patternUnits="userSpaceOnUse" width="100%" height="100%">
+                        <image id="customimg" class='custom' href="" x="0" y="0"
+                            width="350" height="350" />
+                    </pattern>
+            
+                </defs>
+
+                <g id="FlryuE.tif">
+                    <g>
+                        <path class="st3" d="M104.3,175.1c0,0.2,0,0.5,0,0.7c-4.6,2.4-9.2,4.9-13.9,7c-2.6,1.1-5.6,1.3-8.4,2c-2.2,0-4.5,0-6.7,0
+                            c-3.8-1-7.7-1.7-11.3-3c-10.9-4-18.6-12.1-25.1-21.3c-3.3-4.6-6.2-9.2-6.1-15.5c0.2-11.9-0.3-23.8-0.6-35.7c-0.1-4-2.2-6-6.2-6
+                            c-3.8,0-7.7,0-12.4,0c-0.3-6-0.5-11.8-0.8-17.6c-0.2-5.9-0.6-11.9-0.7-17.8c0-3.2,0.5-6.4,0.8-10.5c5.3,0,11.4,0,17.8,0
+                            c0-14,0-27.2,0-41C41.7,23,52.9,26,65.1,25.1c10.3-0.8,18.6-4.7,23.5-14.3c0.9-1.8,1.6-3.8,2.7-6.2c0.8,1.7,1.4,2.8,1.8,3.9
+                            c2.1,7.8,4.8,15.6,6,23.6c2.8,17.8-0.5,35.1-5.6,52.1c-4.3,14.3-6.9,28.8-7.1,43.8C86,146.2,93.7,161.2,104.3,175.1z M48.5,51.3
+                            c0,7.1,6,13.2,13,13.2c6.8,0,12.6-5.5,12.6-12.1c0-7.5-6.2-13.8-13.4-13.7C54,38.9,48.5,44.6,48.5,51.3z"/>
+                        <path class="st2" d="M6.7,57.3c0,16.1,0,31.8,0,47.7c1.9-0.1,3.1-0.2,3.6-0.3c-0.4-2.1-1.3-5-1-5.2c3.4-1.4,2.3-4.3,2.3-6.6
+                            c0-3.6-0.3-7.2-0.4-10.8c-0.1-5.9,0-11.9,0-17.8c-7.4-1.6,1.1-4.9-1.2-7C8.9,57.3,7.7,57.3,6.7,57.3z"/>
+                        <path class="st2" d="M82,184.8c2.8-0.6,5.8-0.8,8.4-2c4.8-2,9.3-4.6,13.9-7c0,3,0,6,0,9C96.9,184.8,89.4,184.8,82,184.8z"/>
+                        <path class="st2" d="M48.5,51.3c0-6.7,5.5-12.4,12.2-12.6c7.2-0.2,13.4,6.2,13.4,13.7c0,6.6-5.8,12.1-12.6,12.1
+                            C54.5,64.5,48.6,58.4,48.5,51.3z"/>
+                        <path class="st3" d="M6.7,57.3c1,0,2.2,0,3.3,0c2.3,2.2-6.2,5.4,1.2,7c0,5.9-0.1,11.8,0,17.8c0,3.6,0.4,7.2,0.4,10.8c0,2.4,1,5.2-2.3,6.6
+                            c-0.3,0.1,0.6,3.1,1,5.2c-0.5,0-1.7,0.1-3.6,0.3C6.7,89,6.7,73.3,6.7,57.3z"/>
+                    </g>
+                </g>
+                </svg>
+            </div>
+
+
+            <div id="charger-settings" class="settings-container">
                 <h2>Body:</h2>
-                <input type="radio" id="green" name="bodycolor" value="alpine.png" onchange="updateBody(this.value)">
+                <input type="radio" id="green" name="bodycolor" value="alpine.png" onchange="updateChargerBody(this.value)">
                 <label for="green">Metallic Alpine</label><br>
 
-                <input type="radio" id="pink" name="bodycolor" value="mulberry.png" onchange="updateBody(this.value)" checked=true>
+                <input type="radio" id="pink" name="bodycolor" value="mulberry.png" onchange="updateChargerBody(this.value)" checked=true>
                 <label for="pink">Mulberry Mist</label><br>
 
-                <input type="radio" id="black" name="bodycolor" value="black.png" onchange="updateBody(this.value)">
+                <input type="radio" id="black" name="bodycolor" value="black.png" onchange="updateChargerBody(this.value)">
                 <label for="black">Midnight Black</label><br>
 
-                <input type="radio" id="red" name="bodycolor" value="red.png" onchange="updateBody(this.value)">
+                <input type="radio" id="red" name="bodycolor" value="red.png" onchange="updateChargerBody(this.value)">
                 <label for="red">Burnt Brick</label><br>
 
-                <input type="radio" id="blue" name="bodycolor" value="blue.png" onchange="updateBody(this.value)">
+                <input type="radio" id="blue" name="bodycolor" value="blue.png" onchange="updateChargerBody(this.value)">
                 <label for="blue">Great Lakes Blue</label><br>
 
-                <input type="radio" id="burst" name="bodycolor" value="burst.png" onchange="updateBody(this.value)">
+                <input type="radio" id="burst" name="bodycolor" value="burst.png" onchange="updateChargerBody(this.value)">
                 <label for="burst">3-Tone Burst</label><br>
 
-                <input type="radio" id="blue2" name="bodycolor" value="blue2.png" onchange="updateBody(this.value)">
+                <input type="radio" id="blue2" name="bodycolor" value="blue2.png" onchange="updateChargerBody(this.value)">
                 <label for="blue2">Deep Sea Blue</label><br>
 
-                <input type="radio" id="green2" name="bodycolor" value="green2.png" onchange="updateBody(this.value)">
+                <input type="radio" id="green2" name="bodycolor" value="green2.png" onchange="updateChargerBody(this.value)">
                 <label for="green2">Oceanside Green</label><br><br>
 
                 <label for="pickguard-color"><h2>Pickguard:</h2></label>
         
-                <input type="radio" id="customcolor" name="guardtexture" value="customcolor" onchange="switchToCustomColor()">
+                <input type="radio" id="customcolor" name="guardtexture" value="customcolor" onchange="switchToChargerCustomColor()">
                 <!--<label for="customcolor">Custom color <input type="color" id="pickguard-color" name="pickguard-color" value="#FbbFFF" onchange="updatePickguardColor(this.value);"></label><br>-->
-                <label for="customcolor">Custom color <input type="color" id="pickguard-color" name="pickguard-color" value="#FbbFFF" onchange="updatePickguardColor(this.value);"></label><br>
+                <label for="customcolor">Custom color <input type="color" id="pickguard-color" name="pickguard-color" value="#FbbFFF" onchange="updateChargerPickguardColor(this.value);"></label><br>
 
-                <input type="radio" id="customimage" name="guardtexture" value="customimage" onchange="switchToCustomImage()">
+                <input type="radio" id="customimage" name="guardtexture" value="customimage" onchange="switchToChargerCustomImage()">
                 <label for="customimage">Custom image <input type="file" id="file_select"/></label><br>
 
-                <input type="radio" id="blueglitter" name="guardtexture" value="blueglitterimg" onchange="updatePickguardImg(this.value)" checked=true>
+                <input type="radio" id="blueglitter" name="guardtexture" value="blueglitterimg" onchange="updateChargerPickguardImg(this.value)" checked=true>
                 <label for="blueglitter">Blue Glitter<br><img style="padding-left:20px" width=50 src="./pickguards/blueglitter.jpg"></label><br>
 
-                <input type="radio" id="redglitter" name="guardtexture" value="redglitterimg" onchange="updatePickguardImg(this.value)">
+                <input type="radio" id="redglitter" name="guardtexture" value="redglitterimg" onchange="updateChargerPickguardImg(this.value)">
                 <label for="redglitter">Red Glitter<br><img style="padding-left:20px" width=50 src="./pickguards/redglitter.jpg"></label><br>
 
-                <input type="radio" id="greenglitter" name="guardtexture" value="greenglitterimg" onchange="updatePickguardImg(this.value)">
+                <input type="radio" id="greenglitter" name="guardtexture" value="greenglitterimg" onchange="updateChargerPickguardImg(this.value)">
                 <label for="greenglitter">Green Glitter<br><img style="padding-left:20px" width=50 src="./pickguards/greenglitter.jpg"></label><br>
 
-                <input type="radio" id="blackglitter" name="guardtexture" value="blackglitterimg" onchange="updatePickguardImg(this.value)">
+                <input type="radio" id="blackglitter" name="guardtexture" value="blackglitterimg" onchange="updateChargerPickguardImg(this.value)">
                 <label for="blackglitter">Black & Silver Glitter<br><img style="padding-left:20px" width=50 src="./pickguards/blacksilverglitter.jpg"></label><br>
 
-                <input type="radio" id="blackgoldglitter" name="guardtexture" value="blackgoldglitterimg" onchange="updatePickguardImg(this.value)">
+                <input type="radio" id="blackgoldglitter" name="guardtexture" value="blackgoldglitterimg" onchange="updateChargerPickguardImg(this.value)">
                 <label for="blackgoldglitter">Black & Gold Glitter<br><img style="padding-left:20px" width=50 src="./pickguards/blackgoldglitter.jpg"></label><br>
 
-                <input type="radio" id="silverglitter" name="guardtexture" value="silverglitterimg" onchange="updatePickguardImg(this.value)">
+                <input type="radio" id="silverglitter" name="guardtexture" value="silverglitterimg" onchange="updateChargerPickguardImg(this.value)">
                 <label for="silverglitter">Silver Glitter<br><img style="padding-left:20px" width=50 src="./pickguards/silverglitter.jpg"></label><br>
 
-                <input type="radio" id="copperglitter" name="guardtexture" value="copperglitterimg" onchange="updatePickguardImg(this.value)">
+                <input type="radio" id="copperglitter" name="guardtexture" value="copperglitterimg" onchange="updateChargerPickguardImg(this.value)">
                 <label for="copperglitter">Copper Glitter<br><img style="padding-left:20px" width=50 src="./pickguards/copperglitter.jpg"></label><br>
 
-                <input type="radio" id="goldglitter" name="guardtexture" value="goldglitterimg" onchange="updatePickguardImg(this.value)">
+                <input type="radio" id="goldglitter" name="guardtexture" value="goldglitterimg" onchange="updateChargerPickguardImg(this.value)">
                 <label for="goldglitter">Gold Glitter<br><img style="padding-left:20px" width=50 src="./pickguards/goldglitter.jpg"></label><br>
 
-                <input type="radio" id="whitepearl" name="guardtexture" value="whitepearlimg" onchange="updatePickguardImg(this.value)">
+                <input type="radio" id="whitepearl" name="guardtexture" value="whitepearlimg" onchange="updateChargerPickguardImg(this.value)">
                 <label for="whitepearl">White Pearl<br><img style="padding-left:20px" width=50 src="./pickguards/whitepearl.jpg"></label><br>
+        </div>
 
-                
 
-                <script>
-                $("input:file").change(function () {
-                    uncheckTextureButtons();
+        <div id="sg-settings" class="settings-container">
+            <h2>Body:</h2>
 
-                    if ($(this).val() !== "") {
-                    var file = $('#file_select')[0].files[0];
-                    console.log(file.size);
-                    //console.log(file.width);
-                    var reader = new FileReader();
-                    var img = new Image();
-                    var _URL = window.URL || window.webkitURL;
-                    reader.readAsDataURL(file);
-                    reader.onload = function(_file) {
-                    
-                    $('#custompattern #customimg').attr('href',_file.target.result);
-                    //console.log(img.src);
-                    console.log(img.width);
-                } 
-                    }
+            <label for="pickguard-color"><h2>Pickguard:</h2></label>
+    
+            <input type="radio" id="sg-customcolor" name="sg-guardtexture" value="customcolor" onchange="switchToSGCustomColor()" checked=true>
+            <!--<label for="customcolor">Custom color <input type="color" id="pickguard-color" name="pickguard-color" value="#FbbFFF" onchange="updatePickguardColor(this.value);"></label><br>-->
+            <label for="customcolor">Custom color <input type="color" id="sg-pickguard-color" name="pickguard-color" value="#AEA3FD" onchange="updateSGPickguardColor(this.value);"></label><br>
 
-                    document.getElementById("customimage").checked = true;
-                    updatePickguardImg("custompattern");
+            <input type="radio" id="sg-customimage" name="sg-guardtexture" value="customimage" onchange="switchToSGCustomImage()">
+            <label for="sg-customimage">Custom image <input type="file" id="file_select"/></label><br>
 
-                });
-                </script>
+            <input type="radio" id="sg-blueglitter" name="sg-guardtexture" value="blueglitterimg" onchange="updateSGPickguardImg(this.value)">
+            <label for="sg-blueglitter">Blue Glitter<br><img style="padding-left:20px" width=50 src="./pickguards/blueglitter.jpg"></label><br>
+
+            <input type="radio" id="sg-redglitter" name="sg-guardtexture" value="redglitterimg" onchange="updateSGPickguardImg(this.value)">
+            <label for="sg-redglitter">Red Glitter<br><img style="padding-left:20px" width=50 src="./pickguards/redglitter.jpg"></label><br>
+
+            <input type="radio" id="sg-greenglitter" name="sg-guardtexture" value="greenglitterimg" onchange="updateSGPickguardImg(this.value)">
+            <label for="sg-greenglitter">Green Glitter<br><img style="padding-left:20px" width=50 src="./pickguards/greenglitter.jpg"></label><br>
+
+            <input type="radio" id="sg-blackglitter" name="sg-guardtexture" value="blackglitterimg" onchange="updateSGPickguardImg(this.value)">
+            <label for="sg-blackglitter">Black & Silver Glitter<br><img style="padding-left:20px" width=50 src="./pickguards/blacksilverglitter.jpg"></label><br>
+
+            <input type="radio" id="sg-blackgoldglitter" name="sg-guardtexture" value="blackgoldglitterimg" onchange="updateSGPickguardImg(this.value)">
+            <label for="sg-blackgoldglitter">Black & Gold Glitter<br><img style="padding-left:20px" width=50 src="./pickguards/blackgoldglitter.jpg"></label><br>
+
+            <input type="radio" id="sg-silverglitter" name="sg-guardtexture" value="silverglitterimg" onchange="updateSGPickguardImg(this.value)">
+            <label for="sg-silverglitter">Silver Glitter<br><img style="padding-left:20px" width=50 src="./pickguards/silverglitter.jpg"></label><br>
+
+            <input type="radio" id="sg-copperglitter" name="sg-guardtexture" value="copperglitterimg" onchange="updateSGPickguardImg(this.value)">
+            <label for="sg-copperglitter">Copper Glitter<br><img style="padding-left:20px" width=50 src="./pickguards/copperglitter.jpg"></label><br>
+
+            <input type="radio" id="sg-goldglitter" name="sg-guardtexture" value="goldglitterimg" onchange="updateSGPickguardImg(this.value)">
+            <label for="sg-goldglitter">Gold Glitter<br><img style="padding-left:20px" width=50 src="./pickguards/goldglitter.jpg"></label><br>
+
+            <input type="radio" id="sg-whitepearl" name="sg-guardtexture" value="whitepearlimg" onchange="updateSGPickguardImg(this.value)">
+            <label for="sg-whitepearl">White Pearl<br><img style="padding-left:20px" width=50 src="./pickguards/whitepearl.jpg"></label><br>
         </div>
     </div>
 
+    <script>
+        $("input:file").change(function () {
+            uncheckChargerTextureButtons();
+            uncheckSGTextureButtons();
 
+            if ($(this).val() !== "") {
+            var file = $('#file_select')[0].files[0];
+            console.log(file.size);
+            //console.log(file.width);
+            var reader = new FileReader();
+            var img = new Image();
+            var _URL = window.URL || window.webkitURL;
+            reader.readAsDataURL(file);
+            reader.onload = function(_file) {
+            
+            $('#custompattern #customimg').attr('href',_file.target.result);
+            //console.log(img.src);
+            console.log(img.width);
+        } 
+            }
+
+            document.getElementById("customimage").checked = true;
+            updateChargerPickguardImg("custompattern");
+            updateSGPickguardImg("custompattern");
+
+        });
+        </script>
 
         <script>
 
-            function updatePickguardColor(selectedColor) {
+            $(document).ready(function() {
+                $('.sg-container').hide(); 
+                $('#sg-settings').hide();
+            });
+
+            function updateChargerPickguardColor(selectedColor) {
                 var colorButton = document.getElementById("customcolor");
                 colorButton.checked = true;
                 elements = document.getElementsByClassName("st1");
@@ -328,26 +497,26 @@
                 }
             }
 
-            function updatePickguardImg(selectedImg) {
+            function updateChargerPickguardImg(selectedImg) {
                 elements = document.getElementsByClassName("st1");
                 for (var i = 0; i < elements.length; i++) {
                     elements[i].style.fill = 'url(#' + selectedImg + ')';
                 }
             }
 
-            function updateBody(selectedColor) {
-                var guitar = document.getElementById("main-guitar");
+            function updateChargerBody(selectedColor) {
+                var guitar = document.getElementById("charger-guitar");
                 guitar.src = "./bodies/" + selectedColor;
             }
 
-            function uncheckTextureButtons() {
+            function uncheckChargerTextureButtons() {
                 var radios = document.getElementsByName("guardtexture");
                 for( i = 0; i < radios.length; i++ ) {
                     radios[i].checked = false;
                 }
             }
 
-            function switchToCustomColor() {
+            function switchToChargerCustomColor() {
                 var colorPickerValue = document.getElementById("pickguard-color").value;
                 elements = document.getElementsByClassName("st1");
                 for (var i = 0; i < elements.length; i++) {
@@ -355,8 +524,68 @@
                 }                
             }
 
-            function switchToCustomImage() {
-                updatePickguardImg("custompattern");               
+            function switchToChargerCustomImage() {
+                updateChargerPickguardImg("custompattern");               
+            }
+
+
+
+
+            function updateSGPickguardColor(selectedColor) {
+                var colorButton = document.getElementById("sg-customcolor");
+                colorButton.checked = true;
+                elements = document.getElementsByClassName("st3");
+                for (var i = 0; i < elements.length; i++) {
+                    elements[i].style.fill = selectedColor;
+                }
+            }
+
+            function updateSGPickguardImg(selectedImg) {
+                elements = document.getElementsByClassName("st3");
+                for (var i = 0; i < elements.length; i++) {
+                    elements[i].style.fill = 'url(#' + selectedImg + ')';
+                }
+            }
+
+            function updateSGBody(selectedColor) {
+                var guitar = document.getElementById("sg-guitar");
+                guitar.src = "./bodies/gibsob/sg/red.jpg";
+            }
+
+            function switchToSGCustomColor() {
+                var colorPickerValue = document.getElementById("sg-pickguard-color").value;
+                elements = document.getElementsByClassName("st3");
+                for (var i = 0; i < elements.length; i++) {
+                    elements[i].style.fill = colorPickerValue;
+                }                
+            }
+
+            function uncheckSGTextureButtons() {
+                var radios = document.getElementsByName("sg-guardtexture");
+                for( i = 0; i < radios.length; i++ ) {
+                    radios[i].checked = false;
+                }
+            }
+
+            function switchToSGCustomImage() {
+                updateSGPickguardImg("custompattern");               
+            }
+
+            function updateModel(model) {
+                var modelName = document.getElementById("model-name");
+                if (model == "rc290") {
+                    $('.sg-container').hide();
+                    $('.charger-container').show();
+                    $('#charger-settings').show();
+                    $('#sg-settings').hide();
+                    modelName.innerHTML = "Reverend Charger SG";
+                } else if (model == "sg") {
+                    $('.charger-container').hide();
+                    $('.sg-container').show();
+                    $('#charger-settings').hide();
+                    $('#sg-settings').show();
+                    modelName.innerHTML = "Gibson SG";
+                }
             }
 
         </script>

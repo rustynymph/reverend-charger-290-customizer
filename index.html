@@ -2,7 +2,7 @@
 <html>
     <head>
         <title></title>
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <style>
 
             .container {
@@ -42,6 +42,25 @@
 
             <svg class="pickguard" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                     viewBox="0 0 340.9 304.9" style="enable-background:new 0 0 340.9 304.9;" xml:space="preserve">
+
+                    <defs>
+                        <pattern id="whitepearlimg" patternUnits="userSpaceOnUse" width="100%" height="100%">
+                            <image class='twombly' href="./whitepearl.jpg" x="0" y="0"
+                                width="350" height="350" />
+                        </pattern>
+
+                        <pattern id="blueglitterimg" patternUnits="userSpaceOnUse" width="100%" height="100%">
+                            <image class='twombly' href="./blueglitter.jpg" x="0" y="0"
+                                width="350" height="350" />
+                        </pattern>
+
+                        <pattern id="custompattern" patternUnits="userSpaceOnUse" width="100%" height="100%">
+                            <image id="customimg" class='custom' href="" x="0" y="0"
+                                width="350" height="350" />
+                        </pattern>
+                
+                    </defs>
+
                 <style type="text/css">
                     .st0{fill:none;}
                     .st1{fill:#FbbFFF;}
@@ -114,8 +133,40 @@
                 </svg>
             </div>
 
-            <label for="pickguard-color">Select pickguard color:</label>
-            <input type="color" id="pickguard-color" name="pickguard-color" value="#FbbFFF" onchange="updatePickguard(this.value);">
+            <label for="pickguard-color">Select pickguard color or texture:</label><br>
+            Color <input type="color" id="pickguard-color" name="pickguard-color" value="#FbbFFF" onchange="updatePickguard(this.value);">
+            <br>
+            <input type="radio" id="whitepearl" name="guardtexture" value="whitepearlimg" onchange="updatePickguardImg(this.value)">
+            <label for="whitepearl">White Pearl</label><br>
+
+            <input type="radio" id="blueglitter" name="guardtexture" value="blueglitterimg" onchange="updatePickguardImg(this.value)">
+            <label for="blueglitter">Blue Glitter</label><br>
+            Upload custom image: <input type="file" id="file_select"/>
+
+            <script>
+            $("input:file").change(function () {
+                uncheckTextureButtons();
+
+                if ($(this).val() !== "") {
+                 var file = $('#file_select')[0].files[0];
+                 console.log(file.size);
+                 //console.log(file.width);
+                 var reader = new FileReader();
+                 var img = new Image();
+                 var _URL = window.URL || window.webkitURL;
+                 reader.readAsDataURL(file);
+                 reader.onload = function(_file) {
+                 
+                 $('#custompattern #customimg').attr('href',_file.target.result);
+                 //console.log(img.src);
+                 console.log(img.width);
+             } 
+                }
+
+                updatePickguardImg("custompattern");
+
+            });
+            </script>
 
             <br><br>
             Select body color:<br>
@@ -144,18 +195,36 @@
             <label for="green2">Oceanside Green</label><br>
 
 
+
+
         <script>
 
             function updatePickguard(selectedColor) {
+                uncheckTextureButtons();
+
                 elements = document.getElementsByClassName("st1");
                 for (var i = 0; i < elements.length; i++) {
-                    elements[i].style.fill=selectedColor;
+                    elements[i].style.fill = selectedColor;
+                }
+            }
+
+            function updatePickguardImg(selectedImg) {
+                elements = document.getElementsByClassName("st1");
+                for (var i = 0; i < elements.length; i++) {
+                    elements[i].style.fill = 'url(#' + selectedImg + ')';
                 }
             }
 
             function updateBody(selectedColor) {
                 var guitar = document.getElementById("main-guitar");
                 guitar.src = "./" + selectedColor;
+            }
+
+            function uncheckTextureButtons() {
+                var radios = document.getElementsByName("guardtexture");
+                for( i = 0; i < radios.length; i++ ) {
+                    radios[i].checked = false;
+                }
             }
 
         </script>

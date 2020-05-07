@@ -28,6 +28,8 @@
                 text-align: left;
                 display: inline-block;
                 padding: 10px;
+                height: 540px;
+                overflow-y: scroll;
             }
 
             .pickguard {
@@ -62,6 +64,17 @@
                 margin: 0px;
             }
 
+            ::-webkit-scrollbar {
+                -webkit-appearance: none;
+                width: 7px;
+            }
+
+            ::-webkit-scrollbar-thumb {
+                border-radius: 4px;
+                background-color: rgba(0, 0, 0, .5);
+                box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+            }
+
         </style>
     </head>
 
@@ -71,26 +84,70 @@
         <div class="total-container">
 
         <div class="container">
-            <img id="main-guitar" class="guitar" src="./mulberry.png">
+            <img id="main-guitar" class="guitar" src="./bodies/mulberry.png">
 
             <svg class="pickguard" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                     viewBox="0 0 340.9 304.9" style="enable-background:new 0 0 340.9 304.9;" xml:space="preserve">
 
                     <defs>
-                        <pattern id="whitepearlimg" patternUnits="userSpaceOnUse" width="100%" height="100%">
-                            <image class='twombly' href="./whitepearl.jpg" x="0" y="0"
+
+                        <pattern id="blueglitterimg" patternUnits="userSpaceOnUse" width="100%" height="100%">
+                            <image class='twombly' href="./pickguards/blueglitter.jpg" x="0" y="0"
                                 width="350" height="350" />
                         </pattern>
 
-                        <pattern id="blueglitterimg" patternUnits="userSpaceOnUse" width="100%" height="100%">
-                            <image class='twombly' href="./blueglitter.jpg" x="0" y="0"
+                        <pattern id="redglitterimg" patternUnits="userSpaceOnUse" width="100%" height="100%">
+                            <image class='twombly' href="./pickguards/redglitter.jpg" x="0" y="0"
                                 width="350" height="350" />
                         </pattern>
+
+                        <pattern id="greenglitterimg" patternUnits="userSpaceOnUse" width="100%" height="100%">
+                            <image class='twombly' href="./pickguards/greenglitter.jpg" x="0" y="0"
+                                width="350" height="350" />
+                        </pattern>
+
+                        <pattern id="blackglitterimg" patternUnits="userSpaceOnUse" width="100%" height="100%">
+                            <image class='twombly' href="./pickguards/blacksilverglitter.jpg" x="0" y="0"
+                                width="350" height="350" />
+                        </pattern>
+
+                        <pattern id="blackgoldglitterimg" patternUnits="userSpaceOnUse" width="100%" height="100%">
+                            <image class='twombly' href="./pickguards/blackgoldglitter.jpg" x="0" y="0"
+                                width="350" height="350" />
+                        </pattern>
+
+                        <pattern id="silverglitterimg" patternUnits="userSpaceOnUse" width="100%" height="100%">
+                            <image class='twombly' href="./pickguards/silverglitter.jpg" x="0" y="0"
+                                width="350" height="350" />
+                        </pattern>
+
+                        <pattern id="copperglitterimg" patternUnits="userSpaceOnUse" width="100%" height="100%">
+                            <image class='twombly' href="./pickguards/copperglitter.jpg" x="0" y="0"
+                                width="350" height="350" />
+                        </pattern>
+
+                        <pattern id="goldglitterimg" patternUnits="userSpaceOnUse" width="100%" height="100%">
+                            <image class='twombly' href="./pickguards/goldglitter.jpg" x="0" y="0"
+                                width="350" height="350" />
+                        </pattern>
+
+                        <pattern id="whitepearlimg" patternUnits="userSpaceOnUse" width="100%" height="100%">
+                            <image class='twombly' href="./pickguards/whitepearl.jpg" x="0" y="0"
+                                width="350" height="350" />
+                        </pattern>
+
+                        <pattern id="goldglitterimg" patternUnits="userSpaceOnUse" width="100%" height="100%">
+                            <image class='twombly' href="./pickguards/goldglitter.jpg" x="0" y="0"
+                                width="350" height="350" />
+                        </pattern>
+
 
                         <pattern id="custompattern" patternUnits="userSpaceOnUse" width="100%" height="100%">
                             <image id="customimg" class='custom' href="" x="0" y="0"
                                 width="350" height="350" />
                         </pattern>
+
+
                 
                     </defs>
 
@@ -201,11 +258,34 @@
                 <input type="radio" id="customimage" name="guardtexture" value="customimage" onchange="switchToCustomImage()">
                 <label for="customimage">Custom image <input type="file" id="file_select"/></label><br>
 
-                <input type="radio" id="whitepearl" name="guardtexture" value="whitepearlimg" onchange="updatePickguardImg(this.value)">
-                <label for="whitepearl">White Pearl<br><img style="padding-left:20px" width=50 src="./whitepearl.jpg"></label><br>
-
                 <input type="radio" id="blueglitter" name="guardtexture" value="blueglitterimg" onchange="updatePickguardImg(this.value)" checked=true>
-                <label for="blueglitter">Blue Glitter<br><img style="padding-left:20px" width=50 src="./blueglitter.jpg"></label><br>
+                <label for="blueglitter">Blue Glitter<br><img style="padding-left:20px" width=50 src="./pickguards/blueglitter.jpg"></label><br>
+
+                <input type="radio" id="redglitter" name="guardtexture" value="redglitterimg" onchange="updatePickguardImg(this.value)">
+                <label for="redglitter">Red Glitter<br><img style="padding-left:20px" width=50 src="./pickguards/redglitter.jpg"></label><br>
+
+                <input type="radio" id="greenglitter" name="guardtexture" value="greenglitterimg" onchange="updatePickguardImg(this.value)">
+                <label for="greenglitter">Green Glitter<br><img style="padding-left:20px" width=50 src="./pickguards/greenglitter.jpg"></label><br>
+
+                <input type="radio" id="blackglitter" name="guardtexture" value="blackglitterimg" onchange="updatePickguardImg(this.value)">
+                <label for="blackglitter">Black & Silver Glitter<br><img style="padding-left:20px" width=50 src="./pickguards/blacksilverglitter.jpg"></label><br>
+
+                <input type="radio" id="blackgoldglitter" name="guardtexture" value="blackgoldglitterimg" onchange="updatePickguardImg(this.value)">
+                <label for="blackgoldglitter">Black & Gold Glitter<br><img style="padding-left:20px" width=50 src="./pickguards/blackgoldglitter.jpg"></label><br>
+
+                <input type="radio" id="silverglitter" name="guardtexture" value="silverglitterimg" onchange="updatePickguardImg(this.value)">
+                <label for="silverglitter">Silver Glitter<br><img style="padding-left:20px" width=50 src="./pickguards/silverglitter.jpg"></label><br>
+
+                <input type="radio" id="copperglitter" name="guardtexture" value="copperglitterimg" onchange="updatePickguardImg(this.value)">
+                <label for="copperglitter">Copper Glitter<br><img style="padding-left:20px" width=50 src="./pickguards/copperglitter.jpg"></label><br>
+
+                <input type="radio" id="goldglitter" name="guardtexture" value="goldglitterimg" onchange="updatePickguardImg(this.value)">
+                <label for="goldglitter">Gold Glitter<br><img style="padding-left:20px" width=50 src="./pickguards/goldglitter.jpg"></label><br>
+
+                <input type="radio" id="whitepearl" name="guardtexture" value="whitepearlimg" onchange="updatePickguardImg(this.value)">
+                <label for="whitepearl">White Pearl<br><img style="padding-left:20px" width=50 src="./pickguards/whitepearl.jpg"></label><br>
+
+                
 
                 <script>
                 $("input:file").change(function () {
@@ -257,7 +337,7 @@
 
             function updateBody(selectedColor) {
                 var guitar = document.getElementById("main-guitar");
-                guitar.src = "./" + selectedColor;
+                guitar.src = "./bodies/" + selectedColor;
             }
 
             function uncheckTextureButtons() {
